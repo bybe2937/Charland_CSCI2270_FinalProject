@@ -1,10 +1,9 @@
 # -Charland_CSCI2270_FinalProject
 Project Summary:
-A collection of vector sorting algorithms, trying to make bubble, quicksort, and insertion for vectors of strings and ints. maybe add a few other useful algorithms, basically a toolbox of code to use whenever.
+A book and movie list of all of the books/movies that someone wants to read or has read. Keeps them all in one place.
 
 How to run:
-i think it would just be a collection of functions, i may have to make it a class somehow. Probaly the hardest part to implement
-
+One would enter a list of books or movies that they have read or seen and the manager keeps them all organized in a text file.
 Dependencies:
 So far, just stl
 
