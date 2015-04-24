@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <random>
 using namespace std;
 Movie::Movie()
 {
@@ -37,7 +38,7 @@ void Movie::deleteBook(std::string title)
 void Movie::writeToFile()
 {
     ofstream outfile;
-    outfile.open("BookMovieList.txt", ofstream::out | ofstream::trunc);
+    outfile.open("BookMovieList.txt", ofstream::out | ofstream::trunc); ///Trunc overwrites the entire file. Closing the program w/out reading from file will lose all data!
     outfile << "Movies" << '\n';
     for(int i =0; i < Movies.size(); i++)
     {
@@ -51,7 +52,7 @@ void Movie::writeToFile()
     }
 
 }
-void Movie::readFromFile()
+void Movie::readFromFile() ///Now working correctly.
 {
     string line, word, title, genre;
     int rating;
@@ -139,27 +140,63 @@ void Movie::readFromFile()
     else
         cout << "File not found" << endl;
 }
-Moovie Movie::findMovie(std::string title)
+Moovie Movie::findMovie(std::string title) ///Not in use yet
 {
 
 }
-Book Movie::findBook(std::string title)
+Book Movie::findBook(std::string title) ///Not in use yet. Could create a way for the user to see what they rated a movie/book
 {
 
 }
-Book Movie::randBook(std::string genre)
+Book Movie::randBook(std::string genre) ///Not random, uses the first instance that matches. I want to make it actually random.
 {
-
+    for(int i =0; i < Books.size(); i++)
+    {
+        if(Books[i].genre == genre && Books[i].read == false)
+        {
+            return Books[i];
+        }
+    }
+    cout << "No unread books in library" << endl;
+    Book temp;
+    temp.title = "-1";
+    return temp;
 }
-Moovie Movie::randMovie(std::string genre)
+Moovie Movie::randMovie(std::string genre) ///I would love for these to actually be random instead of just the first one in the list that matches
 {
-
+    for(int i =0; i < Movies.size(); i++)
+    {
+        if(Movies[i].genre == genre && Movies[i].seen == false)
+        {
+            return Movies[i];
+        }
+    }
+    cout << "No unseen movies in library" << endl;
+    Moovie temp;
+    temp.title = "-1";
+    return temp;
 }
-void Movie::updateBook(std::string title, int rating)
+void Movie::updateBook(std::string title, int rating) /// Updates the seen bool to true and the rating for a movie
 {
-
+    for(int i =0; i< Books.size();i++)
+    {
+        if(Books[i].title == title)
+        {
+            Books[i].rating = rating;
+            Books[i].read = true;
+            break;
+        }
+    }
 }
-void Movie::updateMovie(std::string title, int rating)
+void Movie::updateMovie(std::string title, int rating) ///Updates the seen bool to true and changes the rating of the book
 {
-
+    for(int i=0; i < Movies.size(); i++)
+    {
+        if(Movies[i].title == title)
+        {
+            Movies[i].rating = rating;
+            Movies[i].seen = true;
+            break;
+        }
+    }
 }
