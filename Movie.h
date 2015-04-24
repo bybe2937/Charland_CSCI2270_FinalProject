@@ -31,8 +31,8 @@ class Movie
         Book findBook(std::string title);
         Book randBook(std::string genre);
         Moovie randMovie(std::string genre);
-        void updateBook(std::string title);
-        void updateMovie(std::string title);
+        void updateBook(std::string title, int rating);
+        void updateMovie(std::string title, int rating);
 
     protected:
     private:
