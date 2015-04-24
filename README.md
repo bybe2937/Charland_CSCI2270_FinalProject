@@ -16,5 +16,6 @@ None
 Contributers:
 
 Bugs:
+If the data file is empty but not deleted the program crashes when trying to read from file.
 
 
