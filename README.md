@@ -1,4 +1,4 @@
-# -Charland_CSCI2270_FinalProject
+# Charland_CSCI2270_FinalProject
 Project Summary:
 A book and movie list of all of the books/movies that someone wants to read or has read. Keeps them all in one place.
 
