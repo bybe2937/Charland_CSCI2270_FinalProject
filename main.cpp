@@ -6,7 +6,7 @@ using namespace std;
 void printMenu();
 int main()
 {
-    Movie database;
+    Movie database; ///Creating the initial database.
     string input = "-1";
     while (input != "8")
     {
@@ -98,7 +98,8 @@ int main()
             cout << "What Genre?" << endl;
             getline(cin, genre);
             Moovie output = database.randMovie(genre);
-            cout << "Go watch this: " << output.title << endl;
+            if(output.title != "-1")
+                cout << "Go watch this: " << output.title << endl;
         }
         else if(input == "7")
         {
@@ -106,10 +107,11 @@ int main()
             cout << "What Genre?" << endl;
             getline(cin, genre);
             Book output = database.randBook(genre);
-            cout << "Go read this: " << output.title << endl;
+            if(output.title != "-1")
+                cout << "Go read this: " << output.title << endl;
         }
     }
-    database.writeToFile();
+    database.writeToFile(); /// overwrites to the same filename as read in. Keeps the database after the manager is closed
     cout << "Later!"<< endl;
 
     return 0;
