@@ -5,11 +5,7 @@ A book and movie list of all of the books/movies that someone wants to read or h
 
 **How to run:**
 
-- Download the repository using git
-- Navigate to the directory in the terminal
-- Type "make" to compile the program
-- To run type "./main"
-- Type "make clean" to clean the directory (Removes main and all .a and .o files)
+Download the files and open a terminal window and navigate to the Charland_CSCI2270_FinalProject folder, In terminal for linux use "./FinalProject" and that should run the executable. Then the menu should let you navigate through the program. One would enter a list of books or movies that they have read or seen and the manager keeps them all organized in a text file. Dependencies: So far, just stl
 
 **Dependencies:**
 
