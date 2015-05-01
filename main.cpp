@@ -8,7 +8,7 @@ int main()
 {
     Movie database; ///Creating the initial database.
     string input = "-1";
-    while (input != "8")
+    while (input != "0")
     {
         printMenu();
         getline(cin, input);
@@ -110,6 +110,12 @@ int main()
             if(output.title != "-1")
                 cout << "Go read this: " << output.title << endl;
         }
+		else if(input == "8"){
+			database.printMovieGenres();
+		}
+		else if(input == "9"){
+			database.printBookGenres();
+		}
     }
     database.writeToFile(); /// overwrites to the same filename as read in. Keeps the database after the manager is closed
     cout << "Later!"<< endl;
@@ -126,5 +132,7 @@ void printMenu()
     cout << "5. Mark as Read" << endl;
     cout << "6. Pick me a movie!" << endl;
     cout << "7. Pick me a book!" << endl;
-    cout << "8. Quit" << endl;
+	cout << "8. Print Movie Genres" << endl;
+	cout << "9. Print Book Genres" << endl;
+	cout << "0. Quit" << endl;
 }

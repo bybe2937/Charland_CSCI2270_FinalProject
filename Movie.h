@@ -1,3 +1,5 @@
+#endif // MOVIE_H
+
 #ifndef MOVIE_H
 #define MOVIE_H
 #include <string>
@@ -33,6 +35,8 @@ class Movie
         Moovie randMovie(std::string genre);
         void updateBook(std::string title, int rating);
         void updateMovie(std::string title, int rating);
+		void printBookGenres();
+		void printMovieGenres();
 
     protected:
     private:

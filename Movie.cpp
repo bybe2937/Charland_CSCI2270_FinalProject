@@ -205,3 +205,31 @@ void Movie::updateMovie(std::string title, int rating) ///Updates the seen bool 
         }
     }
 }
+void Movie::printBookGenres()
+{
+    if(Books.empty()){
+    	printf("Book Genres that are Avaliable:\n");
+    	cout<<Books[0].genre;
+    	for(unsigned int i = 1; i < Books.size(); ++i){
+    		cout << ", " << Books[i].genre;
+    	}
+    	cout<<endl;
+    }
+    else{
+        printf("No Book Genres Avaliable.\n");
+    }
+}
+void Movie::printMovieGenres()
+{
+    if(Movies.empty()){
+    	printf("Movie Genres that are Avaliable:\n");
+    	cout<<Movies[0].genre;
+    	for(unsigned int i = 1; i < Movies.size(); ++i){
+    		cout << ", " << Movies[i].genre;
+    	}
+    	cout<<endl;
+    }
+    else{
+        printf("No Movie Genres Avaliable.\n");
+    }
+}
