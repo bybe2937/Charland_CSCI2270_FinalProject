@@ -42,13 +42,18 @@ void Movie::writeToFile()
     outfile << "Movies" << '\n';
     for(int i =0; i < Movies.size(); i++)
     {
+        if(Movies[i].title != "0"){
         outfile<< Movies[i].title << ',' << Movies[i].genre << ',' << Movies[i].rating << ',' << Movies[i].seen << '\n';
+        }
 
     }
     outfile << "Books" << '\n';
     for (int i =0; i< Books.size(); i++)
     {
-        outfile << Books[i].title << ',' << Books[i].genre << ',' << Books[i].rating << ',' << Books[i].read << '\n';
+        if(Books[i].title != "0")
+        {
+            outfile << Books[i].title << ',' << Books[i].genre << ',' << Books[i].rating << ',' << Books[i].read << '\n';
+        }
     }
 
 }
@@ -109,7 +114,7 @@ void Movie::readFromFile() ///Now working correctly.
                 for(int i =0; i < 4; i++)
                 {
                     getline(ss, word, ',');
-                    cout << word << ' ' << i << endl;
+                    //cout << word << ' ' << i << endl;
                     if(i == 0)
                     {
                         title = word;
