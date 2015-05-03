@@ -57,6 +57,7 @@ void Movie::writeToFile()
     }
 
 }
+
 void Movie::readFromFile() ///Now working correctly.
 {
     string line, word, title, genre;
@@ -66,80 +67,94 @@ void Movie::readFromFile() ///Now working correctly.
     stringstream ss;
     ifstream infile;
     infile.open("BookMovieList.txt");  /// This is the same filename that it outputs to.
-    if(infile.is_open())
+    if(infile.peek() == ifstream::traits_type::eof()){
+        cout<<"File is empty. Nothing to read in."<<endl;
+    }
+    else if(infile.is_open())
     {
         getline(infile, line);
-        while(getline(infile, line))
-        {
-            ss << line;
-            if(line == "Books")  ///This pulls the header off of the Books section of the file and makes it do books instead
+            while(getline(infile, line))
             {
-                isMovies = false;
-                getline(infile, line);
-                ss.clear();
                 ss << line;
-            }
-            if(isMovies)
-            {
-                for(int i =0; i < 4; i++)
+                if(line == "Books")  ///This pulls the header off of the Books section of the file and makes it do books instead
                 {
-                    getline(ss, word, ',');
-                    if(i == 0)
-                    {
-                        title = word;
-                    }
-                    else if (i == 1)
-                    {
-                        genre = word;
-                    }
-                    else if(i == 2)
-                    {
-                        rating = stoi(word);
-                    }
-                    else if(i == 3)
-                    {
-                        seen = stoi(word);
-                    }
+                    isMovies = false;
+                    getline(infile, line);
+                    ss.clear();
+                    ss << line;
                 }
-                Moovie temp; ///Creates a movie object and adds it to movie vector
-                temp.genre = genre;
-                temp.rating = rating;
-                temp.title = title;
-                temp.seen = seen;
-                Movies.push_back(temp);
-                cout << "Movie Added "<< temp.title << endl;
-            }
-            else
-            {
-                for(int i =0; i < 4; i++)
+                if(isMovies)
                 {
-                    getline(ss, word, ',');
-                    //cout << word << ' ' << i << endl;
-                    if(i == 0)
+                    for(int i =0; i < 4; i++)
                     {
-                        title = word;
+                        getline(ss, word, ',');
+                        if(i == 0)
+                        {
+                            title = word;
+                        }
+                        else if (i == 1)
+                        {
+                            genre = word;
+                        }
+                        else if(i == 2)
+                        {
+                            if(word != ""){
+                                rating = stoi(word);
+                            }
+                        }
+                        else if(i == 3)
+                        {
+                            if(word != ""){
+                                seen = stoi(word);
+                            }
+                        }
                     }
-                    else if (i == 1)
-                    {
-                        genre = word;
-                    }
-                    else if(i == 2)
-                    {
-                        rating = stoi(word);
-                    }
-                    else if(i == 3)
-                    {
-                        seen = stoi(word);
-                    }
+                    Moovie temp; ///Creates a movie object and adds it to movie vector
+                    temp.genre = genre;
+                    temp.rating = rating;
+                    temp.title = title;
+                    temp.seen = seen;
+                    Movies.push_back(temp);
+                    cout << "Movie Added "<< temp.title << endl;
                 }
-                Book temp;
-                temp.genre = genre;
-                temp.rating = rating; ///Creates a book object to add to the vector
-                temp.title = title;
-                temp.read = seen;
-                Books.push_back(temp);
-                cout << "Book Added " << temp.title << endl;
-            }
+                else if(line != "")
+                {
+                    for(int i =0; i < 4; i++)
+                    {
+                        getline(ss, word, ',');
+                        //cout << word << ' ' << i << endl;
+                        if(i == 0)
+                        {
+                            title = word;
+                        }
+                        else if (i == 1)
+                        {
+                            genre = word;
+                        }
+                        else if(i == 2)
+                        {
+                            if(word != ""){
+                                rating = stoi(word);
+                            }
+                        }
+                        else if(i == 3)
+                        {
+                            if(word != ""){
+                                seen = stoi(word);
+                            }
+                        }
+                    }
+                    Book temp;
+                    temp.genre = genre;
+                    temp.rating = rating; ///Creates a book object to add to the vector
+                    temp.title = title;
+                    temp.read = seen;
+                    Books.push_back(temp);
+                    cout << "Book Added " << temp.title << endl;
+                }
+                else{
+                    cout<<"No movies or books in file. Please add books or movies for this to work."<<endl;
+                }
         }
     }
     else
