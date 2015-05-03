@@ -116,6 +116,18 @@ int main()
 		else if(input == "9"){
 			database.printBookGenres();
 		}
+	else if(input == "10"){
+            string bookTitle;
+            cout << "What book would you like to delete?" << endl;
+            getline(cin, bookTitle);
+            database.deleteBook(bookTitle);
+        }
+        else if(input == "11"){
+            string movieTitle;
+            cout << "What movie would you like to delete?" << endl;
+            getline(cin, movieTitle);
+            database.deleteMovie(movieTitle);
+        }
     }
     database.writeToFile(); /// overwrites to the same filename as read in. Keeps the database after the manager is closed
     cout << "Later!"<< endl;
@@ -134,5 +146,7 @@ void printMenu()
     cout << "7. Pick me a book!" << endl;
 	cout << "8. Print Movie Genres" << endl;
 	cout << "9. Print Book Genres" << endl;
+	cout << "10. Delete Book" << endl;
+	cout << "11. Delete Movie" << endl;
 	cout << "0. Quit" << endl;
 }
