@@ -30,10 +30,34 @@ void Movie::addBook(std::string title, std::string genre, bool read, int rating)
 void Movie::deleteMovie(std::string title)
 {
     ///Not in use yet. Can't decide if it should be implemented.
+    bool found = false;
+    for(int i = 0; i < Movies.size(); i++)
+    {
+        if(Movies[i].title == title)
+        {
+            Movies.erase(Movies.begin() + i-1);
+            found = true;
+        }
+    }
+    if(!found){
+        cout << "Movie not found" << endl;
+    }
 }
 void Movie::deleteBook(std::string title)
 {
     ///Not in use yet. Can't decide if it should be implemented or not.
+    bool found = false;
+    for(int i = 0; i < Books.size(); i++)
+    {
+        if(Books[i].title == title)
+        {
+            Books.erase(Books.begin() + i-1);
+            found = true;
+        }
+    }
+    if(!found){
+        cout << "Book not found" << endl;
+    }
 }
 void Movie::writeToFile()
 {
